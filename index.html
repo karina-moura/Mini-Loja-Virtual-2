@@ -5,12 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Loja Virtual 2</title>
+    <link rel="stylesheet" href="">
 </head>
 <body>
+    <h2>Vitrine</h2>
     <div id="produtos">
 
     </div>
     <div id="carrinho">
+        <h2>Carrinho</h2>
+    </div>
+
         <script>
             const items =[
                 {
@@ -42,7 +47,7 @@
                     <div class="produto-single">
                         <img src="`+val.img+`" />
                         <p>`+val.nome+`</p>
-                        <a key="`+val.id+`" href="">Adicionar ao carrinho<a/>
+                        <a key="`+val.id+`" href="#">Adicionar ao carrinho<a/>
                     </div>
                     
                     `;
@@ -52,16 +57,24 @@
             inicializarLoja();
 
             atualizarCarrinho = () => {
+                console.log(items);
 
             }
 
             var links = document.getElementsByTagName('a');
+            for(var i = 0; i < links.length; i++){
+                links[i].addEventListener("click", function(){
+                    let key =this.getAttribute('key');
+                    items[key]. quantidade++;
+                    atualizarCarrinho();
+                    return false;
+                })
+            }
 
 
 
 
 
         </script>
-    </div>
 </body>
 </html>

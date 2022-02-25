@@ -6,12 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Loja Virtual 2</title>
     <style>
-        #produtos,
-        #carrinho{
+        #produtos{
             max-width: 900px;
             margin: 0 auto;
             padding: 0 2%;
             display: flex;
+
+        }
+        #carrinho{
+            display: block;
+
+        }
+        .produto-single{
+            width: 33.3%;
+            padding: 0 20px;
 
         }
     </style>
@@ -66,8 +74,19 @@
             inicializarLoja();
 
             atualizarCarrinho = () => {
-                console.log(items);
+                var containerCarrinho = document.getElementById('carrinho');
+                containerCarrinho.innerHTML = "";
+                items.map((val)=>{
+                    if(val.quantidade >0){
+                        containerCarrinho.innerHTML+=`
+                        <p>`+val.nome+`  | quantidade: `+val.quantidade+`</p>
+                        <hr>
 
+                    `;
+                    }
+
+                })
+              
             }
 
             var links = document.getElementsByTagName('a');
